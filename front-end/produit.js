@@ -33,19 +33,26 @@ function renderHTML(data) {
         <h3 class="cards__item__body--title">Appareil photo vintage ${data.name}</h3>
         <p class="cards__item__body--name"><strong>Marque : </strong>${data.name}</p>
         <p class="cards__item__body--lenses"><strong>Lentilles : </strong>${data.lenses}</p>
-        <p class="cards__item__body--description"><strong>Description : </strong>${data.description.slice(31)}...</p>
+        <p class="cards__item__body--description"><strong>Description : </strong>${data.description}...</p>
         <p class="cards__item__body--price"><strong>Prix : </strong>${data.price}€</p>
         <div class="cards__item--button">
         </a>
       </div>
       </div>
     </li>`;
-    // test option
+
     for (let i = 0; i < data.lenses.length; i++) {
-      detailDuProduit.innerHTML +=  `<input type="radio" name="lentille" value="${data.lenses[i]}" id="${data.lenses[i]}" /> <label for="${data.lenses[i]}">${data.lenses[i]}</label><br />`
+      detailDuProduit.innerHTML +=  `<input type="radio" name="lentille" value="${data.lenses[i]}" id="${data.lenses[i]}" required /> <label for="${data.lenses[i]}">${data.lenses[i]}</label><br />`
     }
-    detailDuProduit.innerHTML += `<button type="button"  data-id="${id}" data-name="${data.name}" data-price="${data.price}" data-weight="97">Ajouter au panier</button>
+    detailDuProduit.innerHTML += `<button type="submit" class="button" data-id="${id}" data-name="${data.name}" data-price="${data.price}">Ajouter au panier</button>
     `
+    let addBasket = document.getElementsByTagName('button');
+
+    if (addBasket.length){
+    addBasket[0].addEventListener("click", function (e) {
+        e.stopPropagation();
+        localStorage.setItem("id", id);
+    })
+};
 };
 
-  console.log(detailDuProduit);
