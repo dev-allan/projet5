@@ -13,6 +13,7 @@ Resquest.send();
 
 console.log(Resquest);
 
+
 function renderHTML(data) {
   for (let i = 0; i < data.length; i++) {
     listCamera.innerHTML += `<li class="articles__lists--item cards__item">

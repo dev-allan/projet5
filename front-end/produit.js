@@ -34,7 +34,7 @@ function renderHTML(data) {
         <p class="cards__item__body--name"><strong>Marque : </strong>${data.name}</p>
         <p class="cards__item__body--lenses"><strong>Lentilles : </strong>${data.lenses}</p>
         <p class="cards__item__body--description"><strong>Description : </strong>${data.description}...</p>
-        <p class="cards__item__body--price"><strong>Prix : </strong>${data.price}€</p>
+        <p class="cards__item__body--price"><strong>Prix : </strong>${data.price/100}€</p>
         <div class="cards__item--button">
         </a>
       </div>
@@ -51,8 +51,16 @@ function renderHTML(data) {
     if (addBasket.length){
     addBasket[0].addEventListener("click", function (e) {
         e.stopPropagation();
-        localStorage.setItem("id", id);
+        let produitChoisi = {
+          id : id,
+          nom : data.name,
+          prix : data.price/100,
+          option : data.lenses,
+        };
+        let produitChoisi_json = JSON.stringify(produitChoisi);
+
+        let basket = [produitChoisi.nom];
+        localStorage.setItem(basket, produitChoisi_json);
     })
 };
 };
-
