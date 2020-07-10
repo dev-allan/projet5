@@ -55,8 +55,8 @@ function renderHTML(data) {
           id : id,
           nom : data.name,
           prix : data.price/100,
-          option : data.lenses,
         };
+        
         let produitChoisi_json = JSON.stringify(produitChoisi);
 
         let basket = [produitChoisi.nom];

@@ -10,6 +10,8 @@ function IndexLocalStorage(){
     }
 };
 
+
+
 let basket = IndexLocalStorage();
 
 let localStorageData = {
